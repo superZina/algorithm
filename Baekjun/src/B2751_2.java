@@ -19,6 +19,5 @@ public class B2751_2 {
 		}
 		
 		System.out.println(sb);
-		System.out.println();
 	}
 }
