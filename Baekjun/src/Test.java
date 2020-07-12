@@ -13,6 +13,6 @@ public class Test {
 		Scanner sc = new Scanner(System.in);
 		int A = sc.nextInt(); int B = sc.nextInt(); int C = sc.nextInt();
 		int result = BEP(A,B,C);
-		System.out.print(result);
+		System.out.print(result );
 	}
 }
