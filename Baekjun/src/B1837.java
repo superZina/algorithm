@@ -1,45 +1,50 @@
 import java.math.BigInteger;
 import java.util.*;
 public class B1837 {
-	public static boolean isPrime(int num) {
-		if(num == 2) {
-			return true;
-		}else {
-		for(int i =3; i<=Math.sqrt(num); i++) {
-			if(num%i == 0) {
-				return false;
+	public static boolean[] isPrime(int num) {
+		boolean[] prime = new boolean[num];
+		for(int i=2 ; i<num;i++) {
+			prime[i] = true;
+		}
+		prime[1] = false;
+		for(int i=2; i<num; i++) {
+			for(int j=2 ; i*j < num; j++) {
+				prime[i*j] = false;
 			}
 		}
-		}
-		return true;
+		return prime;
 	}
-	public static boolean isDivided(int k , BigInteger P) {
-		
-		if(P.intValue()%k==0) {
+	public static boolean isDivided(int k , String P) {
+		char[] c = P.toCharArray();
+		int p = 0;
+		for( int i=0 ; i<P.length(); i++) {
+			p = (p*10 + (P.charAt(i) -'0'))%k; 
+		}
+		if(p==0) {
 			return true;
 		}else
 			return false; 
 	}
 	public static void main(String[] args) { 
 		Scanner sc = new Scanner(System.in);
-		String p = sc.next();
+		String P = sc.next();
 		int K = sc.nextInt();
-		BigInteger P = new BigInteger(p);
+//		BigInteger P = new BigInteger(p);
+		boolean[] prime = isPrime(K);
 		
 		boolean isGood = true;
 		for(int i =2 ; i<K; i++) {
-				if(isPrime(i)) { //k 미만의 소수일 때 
-					if(isDivided(i,P) && i !=K) { //k미만의 소수가 P를 나눌 수 있다면 
-						isGood = false;
-						System.out.println("BAD "+i);
-						break;
-					}else {
-						isGood = true;
-					}
+				if(prime[i] && isDivided(i,P)) { //k 미만의 소수일 때
+					isGood = false;
+					System.out.println("BAD "+i);
+					break;
 				}
 			}
 		if( isGood) {
-			System.out.print("GOOD");
+			System.out.println("GOOD");
 		}
 		}
 		}
+
+
+
