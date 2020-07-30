@@ -20,5 +20,6 @@ public class B11051 {
 			}
 		}
 		System.out.print(dp[N][K]);
+		System.out.print(dp[N][K]);
 	}
 }
