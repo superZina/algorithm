@@ -1,43 +1,32 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.*;
 public class B1793 {
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		while(sc.hasNextLine()) {
-			String prob = sc.nextLine();
-//			BigInteger n = sc.nextBigInteger();
-			StringTokenizer st = new StringTokenizer(prob);
-			BigInteger n;
-			if(!prob.isEmpty()) {
-				//string을 bigInteger로
-				n = BigInteger.valueOf(Long.parseLong(st.nextToken()));
+	public static void main(String args[]) throws IOException {
+//		Scanner sc = new Scanner(System.in);
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		String s;
+		while((s = bf.readLine())!= null) {
+			if (s=="") break;
+				int n = Integer.parseInt(s);
+				
+			if(n==0) {
+				System.out.println(1);
 			}else {
-				break;
-			}
-			if(n == BigInteger.ONE || n == BigInteger.valueOf(2)) {
-				int[] d = new int[3];
-				d[0] = 0;
-				d[1] = 1;
-				d[2] = 3;
-				long res = d[n.intValue()]%10007;
-				System.out.println(res);
-			}else {
-				int N = n.intValue();
-			BigInteger[] dp = new BigInteger[N+1];
-			dp[0] = BigInteger.ZERO;
-			dp[1] = BigInteger.ONE;
-			dp[2] = BigInteger.valueOf(3);
-			for(int i=3; i<=N; i++) {
-				BigInteger tmp = dp[i-2].multiply(BigInteger.valueOf(2));
-				dp[i] = dp[i-1].add(tmp) ;
-//				dp[i] = dp[i]%0;
-			}
-			
-			
-			
-			System.out.println(dp[n.intValue()]);
-			}
-//			System.out.print(st.nextToken());
+				BigInteger[] dp = new BigInteger[n+1];
+				dp[0] = BigInteger.ZERO;
+				dp[1] = BigInteger.ONE;
+				if(n > 1) {
+					dp[2] = BigInteger.valueOf(3);
+				}
+				for(int i=3; i<=n; i++) {
+					BigInteger tmp = dp[i-2].multiply(BigInteger.valueOf(2));
+					dp[i] = dp[i-1].add(tmp) ;
+				}
+				System.out.println(dp[n]);
+				}
 		}
 		
 	}
