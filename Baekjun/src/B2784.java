@@ -3,10 +3,10 @@ import java.util.*;
 public class B2784 {
 	
 	static String[] words;
-	public static String isIn(int Idx,char c) { //몇번째 문자인지와 해당 문자를 넘겨줘서 문자열 배열중에 해당되는 단어가 있는지 판별한다. 
+	public static String isIn(int Idx,char c,boolean[] b) { //몇번째 문자인지와 해당 문자를 넘겨줘서 문자열 배열중에 해당되는 단어가 있는지 판별한다. 
 		String word="";
 		for(int i=0;i<6;i++) {
-			if(c ==words[i].charAt(Idx)) {
+			if(c ==words[i].charAt(Idx)&& b[i]==false) {
 				word = words[i];
 				break;
 			}
@@ -23,8 +23,11 @@ public class B2784 {
 		char[][] puzzle = new char[3][3];
 		Arrays.sort(words);
 		for(int i=0; i<6;i++) {
+			boolean[] isUsed = new boolean[6];
+			
 			puzzle[0] = words[i].toCharArray();
-			String w = isIn(0,puzzle[0][2]);
+			isUsed[i] = true;
+			String w = isIn(0,puzzle[0][2],isUsed);
 			for(int j=0;j<6;j++) {
 				if(w=="") continue;
 				else break;
@@ -32,12 +35,12 @@ public class B2784 {
 //			System.out.println("w : "+ w);
 			puzzle[1][2] = w.charAt(1);
 			puzzle[2][2] = w.charAt(2);
-			String w1 = isIn(2,puzzle[1][2]);
+			String w1 = isIn(2,puzzle[1][2],isUsed);
 			if(w1=="")continue;
 			else {
 //				System.out.println("w1 : "+ w1);
 				puzzle[1][0] = w1.charAt(0);puzzle[1][1] = w1.charAt(1);
-				String w2 = isIn(2,puzzle[2][2]);
+				String w2 = isIn(2,puzzle[2][2],isUsed);
 				puzzle[2][0] = w2.charAt(0);puzzle[2][1] = w2.charAt(1);
 				break;
 			}
