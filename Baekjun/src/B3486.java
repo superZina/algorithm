@@ -62,18 +62,20 @@ public class B3486 {
 		String text = br.readLine();
 		String two = "";
 		String decoded = "";
-		String[] s = text.split("");
+		StringBuilder sb = new StringBuilder();
+		sb.append(text);
 		int len = text.length()-1;
-		while(len!=1) {
+		while(sb.length()!=1) {
 			
-			two = s[len-1]+ s[len];
-			System.out.println("two : "+two);
-//			two = Character.toString(text.charAt(text.length()-2))+ Character.toString(text.charAt(text.length()-1));
+//			two = s[len-1]+ s[len];
+//			System.out.println("two : "+two);
+			two = Character.toString(text.charAt(text.length()-2))+ Character.toString(text.charAt(text.length()-1));
 			
 			decoded = Mapping(two);
-			len--;
-			s[len] = decoded;
+//			len--;
+//			s[len] = decoded;
+			sb.replace(sb.length()-1, sb.length(), decoded); 
 		}
-		System.out.print(s[0]);
+		System.out.print(sb);
 	}
 }
