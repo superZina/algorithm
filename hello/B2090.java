@@ -3,25 +3,17 @@ import java.math.BigInteger;
 
 public class B2090 {
     public static BigInteger gcd(BigInteger x, BigInteger y ) {
-        BigInteger gcd = BigInteger.ONE;
-        
-        BigInteger max = x.max(y);
-         BigInteger min = x.min(y);
         //  System.out.println("max : "+max+" min : "+min);
-        while(gcd.compareTo(BigInteger.ZERO) == 1){
-            gcd = max.mod(min);
-            // System.out.println("gcd : "+gcd);
-            if(gcd.equals(BigInteger.ZERO)) break;
-            max = min;
-            min = gcd;
-        }
-        return min;
+      if(x.mod(y).equals(BigInteger.ZERO)){
+          return y;
+      }
+      return gcd(y, x.mod(y));
     }
     public static void main(String[] args) throws IOException   {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         String[] nums = br.readLine().split(" ");
-        BigInteger GCD = BigInteger.valueOf(Long.parseLong(nums[0]));
+        BigInteger GCD = BigInteger.valueOf(1);
         BigInteger LCM = BigInteger.ONE; 
 
 
