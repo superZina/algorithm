@@ -6,7 +6,6 @@ public class K01 {
         int min = 9999;
         String ans = "";
         for(int i=1; i<text.length(); i++) { //I개 단위로 자름
-            if( text.length() % i == 0) {//압축하려면 나누어 떨어져야 함
                 String encoded = "";
                 ArrayList<Integer> cnts = new ArrayList<Integer>();
 
@@ -14,6 +13,14 @@ public class K01 {
                 // System.out.println("i : "+i);
                 for(int j=0; j<text.length() ; j= j+i) {
                     if(j == 0) continue;
+                        if(j+i >text.length()) {//남은부분이 분할된 문자 수보다 적다면
+                            String subText = text.substring(j, text.length());
+                            String beforeSub = text.substring(j-i, j);
+                            encoded += beforeSub;
+                            encoded += subText;
+                            // System.out.println(encoded);
+                            break;
+                        }else{
                     String subText = text.substring(j, j+i);
                     String beforeSub = text.substring(j-i, j);
                     // System.out.println("presnt : "+ subText + " , before : "+beforeSub);
@@ -42,6 +49,7 @@ public class K01 {
                         cnt = 1;
                     }
                 }
+                }
                 for(int k=1; k<cnts.size(); k++) {
                     if(cnts.get(k) != cnts.get(k-1)) continue;
                 }
@@ -50,7 +58,6 @@ public class K01 {
                     min = encoded.length();
                 }
                 // System.out.println(ans);
-            }
         }
         System.out.println(min);
         // System.out.println(ans.length());
