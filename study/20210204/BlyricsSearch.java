@@ -94,6 +94,7 @@ public class BlyricsSearch {
         // ---------------------------------------트리
         // 루트노드
         private TrieNode rootNode;
+        int cnt;
 
         // 생성자
         Trie() {
@@ -108,6 +109,7 @@ public class BlyricsSearch {
             // 해당 문자가 노드로 존재하는지 확인하고, 없다면 새로 만들어줌
             for (int i = 0; i < word.length(); i++) {
                 thisNode = thisNode.getChildNodes().computeIfAbsent(word.charAt(i), c -> new TrieNode());
+                thisNode.cnt++;
             }
             // 마지막 노드를 마지막임을 표시
             thisNode.setIsLastChar(true);
@@ -125,12 +127,12 @@ public class BlyricsSearch {
 
                 thisNode = node;
             }
-            return thisNode.getChildNodes().size();
+            return thisNode.cnt;
         }
     }
     public static void main(String[] args) {
         String[] words = {"frodo", "front", "frost", "frozen", "frame", "kakao"};
-        String[] queries = {"fro??", "????o", "fr???", "fro???", "pro?"};
+        String[] queries = {"fro??", "????o", "f????", "fro???", "pro?"};
         int[] ans = solution(words,queries );
         for(int i=0; i<queries.length; i++) {
 
