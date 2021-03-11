@@ -4,25 +4,26 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class muzimukbang {
-    public static class Point{
-        int time; 
+    public static class Point {
+        int time;
         int idx;
+
         public Point(int time, int idx) {
             this.time = time;
             this.idx = idx;
         }
     }
+
     public static int solution(int[] food_times, long k) {
-        
+
         List<Point> list2 = new LinkedList<Point>();
         int size = food_times.length;
         for (int i = 0; i < size; i++) {
             list2.add(new Point(food_times[i], i + 1));
         }
 
-        Collections.sort(list2,new Comparator<Point>() {
+        Collections.sort(list2, new Comparator<Point>() {
             @Override
             public int compare(Point o1, Point o2) {
                 if (o1.time < o2.time) {
@@ -35,19 +36,22 @@ public class muzimukbang {
 
         int prev = 0;
         while (!list2.isEmpty()) {
-            Point tmp = list2.get(0);            
-            if (k - (tmp.time - prev) * list2.size() < 0)
-                break;
-            else {
-                k -= (tmp.time - prev) * list2.size();                
-                prev = tmp.time;
-                list2.remove(0);
+            Point tmp = list2.get(0);
+            if (tmp.time - prev != 0) {
+                if (k - (tmp.time - prev) * list2.size() < 0)
+                    break;
+                else {
+                    k -= (tmp.time - prev) * list2.size();
+                    prev = tmp.time;
+                    list2.remove(0);
+                }
             }
         }
         int answer = 0;
-        if (k==0|| list2.isEmpty())
+        if (list2.isEmpty())
             answer = -1;
         else {
+            k %= list2.size();
             Collections.sort(list2, new Comparator<Point>() {
                 @Override
                 public int compare(Point o1, Point o2) {
@@ -65,7 +69,7 @@ public class muzimukbang {
     }
 
     public static void main(String[] args) {
-        int[] testCase = {1,1,1,1};
+        int[] testCase = { 1, 1, 1, 1 };
         int ans = solution(testCase, 4);
         System.out.println(ans);
     }
