@@ -7,11 +7,14 @@
 
 import Foundation
 
-/*우선순위에 의한 처리(기본적으로는 요청 된 순번으로 처리 해야 함.)
- 
- 요청순으로 특정 작업을 처리하는 도중 다른 요청이 들어오면
- 1건만 있는 경우 작업 끝나고 처리
- 2건 이상인 경우는 처리 시간이 짧은 항목부터 처리*/
 
+//print(solution([[0, 5], [1, 2], [5, 5]]))
+//
+//print(solution(["I 7","I 5","I -5","D -1"]))
 
-print(solution([[0, 5], [1, 2], [5, 5]]))
+//print(solution(1, 22))
+
+//print(numberOfOne(num: 8))
+
+print(solution(4, 17))
+//print(numberOfN(num: 5))

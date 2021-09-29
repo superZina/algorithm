@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FF702B3226F7802100B1D837 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF702B3126F7802100B1D837 /* main.swift */; };
 		FF702B3926F78F7100B1D837 /* sol1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF702B3826F78F7100B1D837 /* sol1.swift */; };
+		FF702B3B26F79A4400B1D837 /* sol2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF702B3A26F79A4400B1D837 /* sol2.swift */; };
+		FFEC484D26F85713009633EB /* sol3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEC484C26F85713009633EB /* sol3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		FF702B2E26F7802100B1D837 /* heap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = heap; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF702B3126F7802100B1D837 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FF702B3826F78F7100B1D837 /* sol1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sol1.swift; sourceTree = "<group>"; };
+		FF702B3A26F79A4400B1D837 /* sol2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sol2.swift; sourceTree = "<group>"; };
+		FFEC484C26F85713009633EB /* sol3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sol3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			children = (
 				FF702B3126F7802100B1D837 /* main.swift */,
 				FF702B3826F78F7100B1D837 /* sol1.swift */,
+				FF702B3A26F79A4400B1D837 /* sol2.swift */,
+				FFEC484C26F85713009633EB /* sol3.swift */,
 			);
 			path = heap;
 			sourceTree = "<group>";
@@ -124,6 +130,8 @@
 			files = (
 				FF702B3926F78F7100B1D837 /* sol1.swift in Sources */,
 				FF702B3226F7802100B1D837 /* main.swift in Sources */,
+				FFEC484D26F85713009633EB /* sol3.swift in Sources */,
+				FF702B3B26F79A4400B1D837 /* sol2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
