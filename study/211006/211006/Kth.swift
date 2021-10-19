@@ -12,6 +12,7 @@ func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
     var result:[Int] = []
     
     commands.forEach { arr in
+        
         let start = arr[0]
         let end = arr[1]
         let k = arr[2]
@@ -22,5 +23,6 @@ func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
         result.append(subArr[k-1])
         
     }
+    
     return result
 }
