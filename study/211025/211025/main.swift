@@ -17,6 +17,7 @@ var viruses:[(Int,Int)] = []
 let dx:[Int] = [0,0,1,-1]
 let dy:[Int] = [1,-1,0,0]
 
+
 (0..<N).forEach { _ in
     arr.append(readLine()!.split(separator: " ").map({
         Int(String($0))!
@@ -45,7 +46,7 @@ func safeArea(arr:[[Int]]) -> Int {
     return cnt
 }
 
-func backTracking( idx:Int, list: inout [(Int,Int)]) {
+func backTracking( idx:Int, list: inout [(Int,Int)] ) {
     if list.count == 3 {
         //바이러스 증식시켜 안전영역 구하기
         var tmp = arr
